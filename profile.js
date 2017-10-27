@@ -22,10 +22,10 @@ function renderForm(req, res, locals) {
       csrfToken: req.csrfToken(),
       givenName: req.user.givenName,
       surname: req.user.surname,
-      streetAddress: req.user.customData.streetAddress,
+      /*streetAddress: req.user.customData.streetAddress,
       city: req.user.customData.city,
       state: req.user.customData.state,
-      zip: req.user.customData.zip
+      zip: req.user.customData.zip*/
   }, locals || {}));
 }
 
@@ -38,15 +38,15 @@ module.exports = function profile() {
   router.all('/', function(req, res) {
       profileForm.handle(req, {
           success: function(form) {
-              req.user.givenName = form.data.givenName;
+            req.user.givenName = form.data.givenName;
             req.user.surname = form.data.surname;
             req.user.streetAddress = form.data.streetAddress;
             req.user.city = form.data.city;
             req.user.state = form.data.state;
             req.user.zip = form.data.zip;
-              renderForm(req, res, {
-                  saved: true
-              });
+            renderForm(req, res, {
+              saved: true
+            });
           },
           empty: function() {
               renderForm(req, res);
