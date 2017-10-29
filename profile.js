@@ -22,10 +22,10 @@ function renderForm(req, res, locals) {
       csrfToken: req.csrfToken(),
       givenName: req.user.givenName,
       surname: req.user.surname,
-      /*streetAddress: req.user.customData.streetAddress,
-      city: req.user.customData.city,
-      state: req.user.customData.state,
-      zip: req.user.customData.zip*/
+      streetAddress: req.user.streetAddress,
+      city: req.user.city,
+      state: req.user.state,
+      zip: req.user.zip
   }, locals || {}));
 }
 
